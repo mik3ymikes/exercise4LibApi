@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+    
+# before_action :set_user, only: [:show, :update, :destroy, :posts_index]
 
     def index
         post=Post.all
@@ -47,7 +49,11 @@ class PostsController < ApplicationController
            end
         
         
-        
+        def posts_index
+            user = User.find(params[:user_id])
+            posts = user.posts
+            render json: posts
+        end
         
         
         def post_params
