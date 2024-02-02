@@ -49,14 +49,17 @@ class PostsController < ApplicationController
            end
         
         
-        def posts_index
+        def posts_ind
+
             user = User.find(params[:user_id])
-            posts = user.posts
-            render json: posts
+            user_posts = user.posts
+            render json: user_posts
+            # user_posts=user.posts
+            # render json: user_posts
         end
         
         
         def post_params
-            params.require(:post).permit(:name, :email)
+            params.require(:post).permit(:title, :content)
         end
         end
